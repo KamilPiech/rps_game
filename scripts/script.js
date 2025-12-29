@@ -1,9 +1,10 @@
 const possibleMoves = ['rock', 'paper', 'scissors']
+const numberOfRounds = 5
+
 let humanScore = 0
 let computerScore = 0
 
 function getComputerChoice(moves) {
-    
     let computerChoice = Math.floor(Math.random() * 3)
     return moves[computerChoice]
 };
@@ -47,13 +48,30 @@ function playRound(humanChoice, computerChoice) {
     }
 };
 
-const humanSelection = getHumanChoice().toLowerCase()
-const computerSelection = getComputerChoice(possibleMoves)
+function playGame(numberOfRounds) {
+    for (let i = 1; i <= numberOfRounds; i++) {
+        let humanSelection = getHumanChoice().toLowerCase()
+        let computerSelection = getComputerChoice(possibleMoves)
 
-console.log('Player choice: ' + humanSelection);
-console.log('Computer choice: ' + computerSelection);
+        console.log('Player choice: ' + humanSelection);
+        console.log('Computer choice: ' + computerSelection);
+        
+        playRound(humanSelection, computerSelection)
 
-playRound(humanSelection, computerSelection);
+        console.log('Player score: ' + humanScore);
+        console.log('Computer score: ' + computerScore);
 
-console.log('Player score: ' + humanScore);
-console.log('Computer score: ' + computerScore);
+    }
+}
+
+playGame(numberOfRounds);
+
+if (humanScore > computerScore) {
+    console.log("Player wins!");
+} else if (humanScore < computerScore) {
+    console.log("Computer wins!");
+} else {
+    console.log("Draw!");
+}
+
+
