@@ -9,9 +9,14 @@ function getComputerChoice(moves) {
     return moves[computerChoice]
 };
 
-function getHumanChoice() {
-    let humanChoice = prompt("Choose your move:")
-    return humanChoice
+function getHumanChoice(moves) {
+    let humanChoice = prompt("Make your move: ")
+
+    while (!humanChoice || !moves.includes(humanChoice.toLowerCase())) {
+        humanChoice = prompt("Unallowed move! Try again")
+    }
+
+    return humanChoice.toLowerCase()
 };
 
 function playRound(humanChoice, computerChoice) {
@@ -50,7 +55,7 @@ function playRound(humanChoice, computerChoice) {
 
 function playGame(numberOfRounds) {
     for (let i = 1; i <= numberOfRounds; i++) {
-        let humanSelection = getHumanChoice().toLowerCase()
+        let humanSelection = getHumanChoice(possibleMoves)
         let computerSelection = getComputerChoice(possibleMoves)
 
         console.log('Player choice: ' + humanSelection);
