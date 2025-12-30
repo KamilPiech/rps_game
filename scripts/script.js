@@ -15,6 +15,16 @@ function getHumanChoice(choice) {
   return choice;
 }
 
+function displayChoices(humanChoice, computerChoice) {
+  console.log("Player choice: " + humanChoice);
+  console.log("Computer choice: " + computerChoice);
+}
+
+function displayScores() {
+  console.log("Player score: " + humanScore);
+  console.log("Computer score: " + computerScore);
+}
+
 function findWinner(humanChoice, computerChoice) {
   if (humanChoice == "rock") {
     if (computerChoice == "paper") {
@@ -50,13 +60,12 @@ function findWinner(humanChoice, computerChoice) {
 }
 
 function playRound(humanChoice, computerChoice) {
-  console.log("Player choice: " + humanChoice);
-  console.log("Computer choice: " + computerChoice);
 
-  findWinner(humanChoice, computerChoice)
+  displayChoices(humanChoice, computerChoice);
 
-  console.log("Player score: " + humanScore);
-  console.log("Computer score: " + computerScore);
+  findWinner(humanChoice, computerChoice);
+
+  displayScores();
 }
 
 function playGame(numberOfRounds) {
